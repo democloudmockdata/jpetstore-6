@@ -1,4 +1,12 @@
-/target
+# /target
+/target/classes
+/target/generated-sources
+/target/generated-test-sources
+/target/osgi
+/target/test-classes
+/target/formatter-maven-cache.properties
+/target/jacoco.exec
+
 /.settings
 /.classpath
 /.project
