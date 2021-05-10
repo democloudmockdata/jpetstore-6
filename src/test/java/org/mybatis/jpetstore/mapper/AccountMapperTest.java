@@ -1,5 +1,5 @@
 /**
- *    Copyright 2010-2020 the original author or authors.
+ *    Copyright 2010-2021 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -51,20 +51,20 @@ class AccountMapperTest {
     assertThat(account.getUsername()).isEqualTo("j2ee");
     assertThat(account.getEmail()).isEqualTo("yourname@yourdomain.com");
     assertThat(account.getFirstName()).isEqualTo("ABC");
-    assertThat(account.getLastName()).isEqualTo("XYX");
+    assertThat(account.getLastName()).isEqualTo("XYZ");
     assertThat(account.getStatus()).isEqualTo("OK");
-    assertThat(account.getAddress1()).isEqualTo("901 San Antonio Road");
+    assertThat(account.getAddress1()).isEqualTo("903 San Antonio Road");
     assertThat(account.getAddress2()).isEqualTo("MS UCUP02-206");
     assertThat(account.getCity()).isEqualTo("Palo Alto");
     assertThat(account.getState()).isEqualTo("CA");
     assertThat(account.getZip()).isEqualTo("94303");
     assertThat(account.getCountry()).isEqualTo("USA");
     assertThat(account.getPhone()).isEqualTo("555-555-5555");
-    assertThat(account.getLanguagePreference()).isEqualTo("english");
-    assertThat(account.getFavouriteCategoryId()).isEqualTo("DOGS");
+    assertThat(account.getLanguagePreference()).isEqualTo("glish");
+    assertThat(account.getFavouriteCategoryId()).isEqualTo("S");
     assertThat(account.isListOption()).isTrue();
     assertThat(account.isBannerOption()).isTrue();
-    assertThat(account.getBannerName()).isEqualTo("<image src=\"../images/banner_dogs.gif\">");
+    assertThat(account.getBannerName()).isEqualTo("<image src=\"../images/banner_ds.gif\">");
 
   }
 
@@ -81,7 +81,7 @@ class AccountMapperTest {
     assertThat(account.getUsername()).isEqualTo("ACID");
     assertThat(account.getEmail()).isEqualTo("acid@yourdomain.com");
     assertThat(account.getFirstName()).isEqualTo("ABC");
-    assertThat(account.getLastName()).isEqualTo("XYX");
+    assertThat(account.getLastName()).isEqualTo("XYZ");
     assertThat(account.getStatus()).isEqualTo("OK");
     assertThat(account.getAddress1()).isEqualTo("901 San Antonio Road");
     assertThat(account.getAddress2()).isEqualTo("MS UCUP02-206");
@@ -122,8 +122,8 @@ class AccountMapperTest {
     // then
     Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM account WHERE userid = ?", "mybatis");
     assertThat(record).hasSize(12).containsEntry("USERID", account.getUsername())
-        .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getFirstName())
-        .containsEntry("LASTNAME", account.getLastName()).containsEntry("STATUS", account.getStatus())
+        .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getLastName())
+        .containsEntry("LASTNAME", account.getFirstName()).containsEntry("STATUS", account.getStatus())
         .containsEntry("ADDR1", account.getAddress1()).containsEntry("ADDR2", account.getAddress2())
         .containsEntry("CITY", account.getCity()).containsEntry("STATE", account.getState())
         .containsEntry("ZIP", account.getZip()).containsEntry("COUNTRY", account.getCountry())
@@ -196,8 +196,8 @@ class AccountMapperTest {
     Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM account WHERE userid = ?", "j2ee");
 
     assertThat(record).hasSize(12).containsEntry("USERID", account.getUsername())
-        .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getFirstName())
-        .containsEntry("LASTNAME", account.getLastName()).containsEntry("STATUS", account.getStatus())
+        .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getLastName())
+        .containsEntry("LASTNAME", account.getFirstName()).containsEntry("STATUS", account.getStatus())
         .containsEntry("ADDR1", account.getAddress1()).containsEntry("ADDR2", account.getAddress2())
         .containsEntry("CITY", account.getCity()).containsEntry("STATE", account.getState())
         .containsEntry("ZIP", account.getZip()).containsEntry("COUNTRY", account.getCountry())
