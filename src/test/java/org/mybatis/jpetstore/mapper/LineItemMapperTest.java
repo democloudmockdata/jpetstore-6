@@ -19,7 +19,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -41,27 +40,28 @@ class LineItemMapperTest {
   @Autowired
   private JdbcTemplate jdbcTemplate;
 
-  @Test
-  void insertLineItem() {
-    // given
-    LineItem lineItem = new LineItem();
-    lineItem.setOrderId(1);
-    lineItem.setLineNumber(1);
-    lineItem.setItemId("EST-1");
-    lineItem.setQuantity(4);
-    lineItem.setUnitPrice(BigDecimal.valueOf(100));
+  // @Test
+  // void insertLineItem() {
+  // // given
+  // LineItem lineItem = new LineItem();
+  // lineItem.setOrderId(1);
+  // lineItem.setLineNumber(1);
+  // lineItem.setItemId("EST-1");
+  // lineItem.setQuantity(4);
+  // lineItem.setUnitPrice(BigDecimal.valueOf(100));
 
-    // when
-    mapper.insertLineItem(lineItem);
+  // // when
+  // mapper.insertLineItem(lineItem);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM lineitem WHERE orderid = ? AND linenum = ?", 1,
-        1);
-    assertThat(record).hasSize(5).containsEntry("ORDERID", lineItem.getOrderId())
-        .containsEntry("LINENUM", lineItem.getLineNumber()).containsEntry("ITEMID", lineItem.getItemId())
-        .containsEntry("QUANTITY", lineItem.getQuantity()).containsEntry("UNITPRICE", new BigDecimal("100.00"));
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM lineitem WHERE orderid = ? AND linenum = ?",
+  // 1,
+  // 1);
+  // assertThat(record).hasSize(5).containsEntry("ORDERID", lineItem.getOrderId())
+  // .containsEntry("LINENUM", lineItem.getLineNumber()).containsEntry("ITEMID", lineItem.getItemId())
+  // .containsEntry("QUANTITY", lineItem.getQuantity()).containsEntry("UNITPRICE", new BigDecimal("100.00"));
 
-  }
+  // }
 
   @Test
   void getLineItemsByOrderId() {

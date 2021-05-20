@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,79 +42,79 @@ class OrderMapperTest {
   @Autowired
   private JdbcTemplate jdbcTemplate;
 
-  @Test
-  void insertOrder() {
-    // given
-    Order order = new Order();
-    order.setOrderId(1);
-    order.setOrderDate(java.sql.Timestamp.valueOf(LocalDateTime.of(2018, 12, 31, 23, 59, 59)));
-    order.setUsername("j2ee");
-    order.setCardType("Visa");
-    order.setCreditCard("1234 5678 9012 3456");
-    order.setExpiryDate("06/2022");
-    order.setCourier("Courier");
-    order.setLocale("ja");
-    order.setTotalPrice(new BigDecimal("2000.05"));
-    order.setBillAddress1("Bill Address1");
-    order.setBillAddress2("Bill Address2");
-    order.setBillCity("Bill City");
-    order.setBillState("Bill State");
-    order.setBillCountry("USA");
-    order.setBillZip("80001");
-    order.setBillToFirstName("Bill First Name");
-    order.setBillToLastName("Bill Last Name");
-    order.setShipAddress1("Ship Address1");
-    order.setShipAddress2("Ship Address2");
-    order.setShipCity("Ship City");
-    order.setShipState("Ship State");
-    order.setShipCountry("JPN");
-    order.setShipZip("70001");
-    order.setShipToFirstName("Ship First Name");
-    order.setShipToLastName("Ship Last Name");
+  // @Test
+  // void insertOrder() {
+  // // given
+  // Order order = new Order();
+  // order.setOrderId(1);
+  // order.setOrderDate(java.sql.Timestamp.valueOf(LocalDateTime.of(2018, 12, 31, 23, 59, 59)));
+  // order.setUsername("j2ee");
+  // order.setCardType("Visa");
+  // order.setCreditCard("1234 5678 9012 3456");
+  // order.setExpiryDate("06/2022");
+  // order.setCourier("Courier");
+  // order.setLocale("ja");
+  // order.setTotalPrice(new BigDecimal("2000.05"));
+  // order.setBillAddress1("Bill Address1");
+  // order.setBillAddress2("Bill Address2");
+  // order.setBillCity("Bill City");
+  // order.setBillState("Bill State");
+  // order.setBillCountry("USA");
+  // order.setBillZip("80001");
+  // order.setBillToFirstName("Bill First Name");
+  // order.setBillToLastName("Bill Last Name");
+  // order.setShipAddress1("Ship Address1");
+  // order.setShipAddress2("Ship Address2");
+  // order.setShipCity("Ship City");
+  // order.setShipState("Ship State");
+  // order.setShipCountry("JPN");
+  // order.setShipZip("70001");
+  // order.setShipToFirstName("Ship First Name");
+  // order.setShipToLastName("Ship Last Name");
 
-    // when
-    mapper.insertOrder(order);
+  // // when
+  // mapper.insertOrder(order);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM orders WHERE orderid = ?", 1);
-    assertThat(record).hasSize(25).containsEntry("ORDERID", order.getOrderId())
-        .containsEntry("USERID", order.getUsername())
-        .containsEntry("ORDERDATE", java.sql.Date.valueOf(LocalDate.of(2018, 12, 31)))
-        .containsEntry("SHIPADDR1", order.getShipAddress1()).containsEntry("SHIPADDR2", order.getShipAddress2())
-        .containsEntry("SHIPCITY", order.getShipCity()).containsEntry("SHIPSTATE", order.getShipState())
-        .containsEntry("SHIPZIP", order.getShipZip()).containsEntry("SHIPCOUNTRY", order.getShipCountry())
-        .containsEntry("SHIPTOFIRSTNAME", order.getShipToFirstName())
-        .containsEntry("SHIPTOLASTNAME", order.getShipToLastName()).containsEntry("BILLADDR1", order.getBillAddress1())
-        .containsEntry("BILLADDR2", order.getBillAddress2()).containsEntry("BILLCITY", order.getBillCity())
-        .containsEntry("BILLSTATE", order.getBillState()).containsEntry("BILLZIP", order.getBillZip())
-        .containsEntry("BILLCOUNTRY", order.getBillCountry())
-        .containsEntry("BILLTOFIRSTNAME", order.getBillToFirstName())
-        .containsEntry("BILLTOLASTNAME", order.getBillToLastName()).containsEntry("COURIER", order.getCourier())
-        .containsEntry("TOTALPRICE", order.getTotalPrice()).containsEntry("CREDITCARD", order.getCreditCard())
-        .containsEntry("EXPRDATE", order.getExpiryDate()).containsEntry("CARDTYPE", order.getCardType())
-        .containsEntry("LOCALE", order.getLocale());
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM orders WHERE orderid = ?", 1);
+  // assertThat(record).hasSize(25).containsEntry("ORDERID", order.getOrderId())
+  // .containsEntry("USERID", order.getUsername())
+  // .containsEntry("ORDERDATE", java.sql.Date.valueOf(LocalDate.of(2018, 12, 31)))
+  // .containsEntry("SHIPADDR1", order.getShipAddress1()).containsEntry("SHIPADDR2", order.getShipAddress2())
+  // .containsEntry("SHIPCITY", order.getShipCity()).containsEntry("SHIPSTATE", order.getShipState())
+  // .containsEntry("SHIPZIP", order.getShipZip()).containsEntry("SHIPCOUNTRY", order.getShipCountry())
+  // .containsEntry("SHIPTOFIRSTNAME", order.getShipToFirstName())
+  // .containsEntry("SHIPTOLASTNAME", order.getShipToLastName()).containsEntry("BILLADDR1", order.getBillAddress1())
+  // .containsEntry("BILLADDR2", order.getBillAddress2()).containsEntry("BILLCITY", order.getBillCity())
+  // .containsEntry("BILLSTATE", order.getBillState()).containsEntry("BILLZIP", order.getBillZip())
+  // .containsEntry("BILLCOUNTRY", order.getBillCountry())
+  // .containsEntry("BILLTOFIRSTNAME", order.getBillToFirstName())
+  // .containsEntry("BILLTOLASTNAME", order.getBillToLastName()).containsEntry("COURIER", order.getCourier())
+  // .containsEntry("TOTALPRICE", order.getTotalPrice()).containsEntry("CREDITCARD", order.getCreditCard())
+  // .containsEntry("EXPRDATE", order.getExpiryDate()).containsEntry("CARDTYPE", order.getCardType())
+  // .containsEntry("LOCALE", order.getLocale());
 
-  }
+  // }
 
-  @Test
-  void insertOrderStatus() {
-    // given
-    Order order = new Order();
-    order.setOrderId(1);
-    order.setOrderDate(java.sql.Timestamp.valueOf(LocalDateTime.of(2018, 12, 31, 23, 59, 59)));
-    order.setStatus("OK");
+  // @Test
+  // void insertOrderStatus() {
+  // // given
+  // Order order = new Order();
+  // order.setOrderId(1);
+  // order.setOrderDate(java.sql.Timestamp.valueOf(LocalDateTime.of(2018, 12, 31, 23, 59, 59)));
+  // order.setStatus("OK");
 
-    // when
-    mapper.insertOrderStatus(order);
+  // // when
+  // mapper.insertOrderStatus(order);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM orderstatus WHERE orderid = ?", 1);
-    assertThat(record).hasSize(4).containsEntry("ORDERID", order.getOrderId())
-        .containsEntry("LINENUM", order.getOrderId())
-        .containsEntry("TIMESTAMP", java.sql.Date.valueOf(LocalDate.of(2018, 12, 31)))
-        .containsEntry("STATUS", order.getStatus());
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM orderstatus WHERE orderid = ?", 1);
+  // assertThat(record).hasSize(4).containsEntry("ORDERID", order.getOrderId())
+  // .containsEntry("LINENUM", order.getOrderId())
+  // .containsEntry("TIMESTAMP", java.sql.Date.valueOf(LocalDate.of(2018, 12, 31)))
+  // .containsEntry("STATUS", order.getStatus());
 
-  }
+  // }
 
   @Test
   void getOrdersByUsername() {

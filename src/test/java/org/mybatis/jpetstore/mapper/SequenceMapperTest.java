@@ -49,17 +49,17 @@ class SequenceMapperTest {
     assertThat(sequence.getNextId()).isEqualTo(1000);
   }
 
-  @Test
-  void updateSequence() {
-    // given
-    Sequence sequence = new Sequence("ordernum", 1001);
+  // @Test
+  // void updateSequence() {
+  // // given
+  // Sequence sequence = new Sequence("ordernum", 1001);
 
-    // when
-    mapper.updateSequence(sequence);
+  // // when
+  // mapper.updateSequence(sequence);
 
-    // then
-    Integer id = jdbcTemplate.queryForObject("SELECT nextid FROM sequence WHERE name = ?", Integer.class, "ordernum");
-    assertThat(id).isEqualTo(1001);
-  }
+  // // then
+  // Integer id = jdbcTemplate.queryForObject("SELECT nextid FROM sequence WHERE name = ?", Integer.class, "ordernum");
+  // assertThat(id).isEqualTo(1001);
+  // }
 
 }

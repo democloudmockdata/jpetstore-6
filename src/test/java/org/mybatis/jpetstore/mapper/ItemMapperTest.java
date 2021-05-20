@@ -19,9 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -125,21 +123,22 @@ class ItemMapperTest {
 
   }
 
-  @Test
-  void updateInventoryQuantity() {
-    // given
-    String itemId = "EST-1";
-    Map<String, Object> params = new HashMap<>();
-    params.put("itemId", itemId);
-    params.put("increment", 10);
+  // @Test
+  // void updateInventoryQuantity() {
+  // // given
+  // String itemId = "EST-1";
+  // Map<String, Object> params = new HashMap<>();
+  // params.put("itemId", itemId);
+  // params.put("increment", 10);
 
-    // when
-    mapper.updateInventoryQuantity(params);
+  // // when
+  // mapper.updateInventoryQuantity(params);
 
-    // then
-    Integer quantity = jdbcTemplate.queryForObject("SELECT QTY FROM inventory WHERE itemid = ?", Integer.class, itemId);
-    assertThat(quantity).isEqualTo(9990);
+  // // then
+  // Integer quantity = jdbcTemplate.queryForObject("SELECT QTY FROM inventory WHERE itemid = ?", Integer.class,
+  // itemId);
+  // assertThat(quantity).isEqualTo(9990);
 
-  }
+  // }
 
 }

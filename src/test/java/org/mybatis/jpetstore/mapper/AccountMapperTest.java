@@ -17,8 +17,6 @@ package org.mybatis.jpetstore.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mybatis.jpetstore.domain.Account;
@@ -98,151 +96,151 @@ class AccountMapperTest {
 
   }
 
-  @Test
-  void insertAccount() {
+  // @Test
+  // void insertAccount() {
 
-    // given
-    Account account = new Account();
-    account.setUsername("mybatis");
-    account.setEmail("mybatis@example.com");
-    account.setFirstName("My");
-    account.setLastName("Batis");
-    account.setStatus("NG");
-    account.setAddress1("Address 1");
-    account.setAddress2("Address 2");
-    account.setCity("City");
-    account.setState("ST");
-    account.setZip("99001");
-    account.setCountry("JPN");
-    account.setPhone("09012345678");
+  // // given
+  // Account account = new Account();
+  // account.setUsername("mybatis");
+  // account.setEmail("mybatis@example.com");
+  // account.setFirstName("My");
+  // account.setLastName("Batis");
+  // account.setStatus("NG");
+  // account.setAddress1("Address 1");
+  // account.setAddress2("Address 2");
+  // account.setCity("City");
+  // account.setState("ST");
+  // account.setZip("99001");
+  // account.setCountry("JPN");
+  // account.setPhone("09012345678");
 
-    // when
-    mapper.insertAccount(account);
+  // // when
+  // mapper.insertAccount(account);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM account WHERE userid = ?", "mybatis");
-    assertThat(record).hasSize(12).containsEntry("USERID", account.getUsername())
-        .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getLastName())
-        .containsEntry("LASTNAME", account.getFirstName()).containsEntry("STATUS", account.getStatus())
-        .containsEntry("ADDR1", account.getAddress1()).containsEntry("ADDR2", account.getAddress2())
-        .containsEntry("CITY", account.getCity()).containsEntry("STATE", account.getState())
-        .containsEntry("ZIP", account.getZip()).containsEntry("COUNTRY", account.getCountry())
-        .containsEntry("PHONE", account.getPhone());
-  }
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM account WHERE userid = ?", "mybatis");
+  // assertThat(record).hasSize(12).containsEntry("USERID", account.getUsername())
+  // .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getLastName())
+  // .containsEntry("LASTNAME", account.getFirstName()).containsEntry("STATUS", account.getStatus())
+  // .containsEntry("ADDR1", account.getAddress1()).containsEntry("ADDR2", account.getAddress2())
+  // .containsEntry("CITY", account.getCity()).containsEntry("STATE", account.getState())
+  // .containsEntry("ZIP", account.getZip()).containsEntry("COUNTRY", account.getCountry())
+  // .containsEntry("PHONE", account.getPhone());
+  // }
 
-  @Test
-  void insertProfile() {
+  // @Test
+  // void insertProfile() {
 
-    // given
-    Account account = new Account();
-    account.setUsername("mybatis");
-    account.setLanguagePreference("japanese");
-    account.setFavouriteCategoryId("C01");
-    account.setListOption(true);
-    account.setBannerOption(false);
+  // // given
+  // Account account = new Account();
+  // account.setUsername("mybatis");
+  // account.setLanguagePreference("japanese");
+  // account.setFavouriteCategoryId("C01");
+  // account.setListOption(true);
+  // account.setBannerOption(false);
 
-    // when
-    mapper.insertProfile(account);
+  // // when
+  // mapper.insertProfile(account);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM profile WHERE userid = ?", "mybatis");
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM profile WHERE userid = ?", "mybatis");
 
-    assertThat(record).hasSize(5).containsEntry("USERID", account.getUsername())
-        .containsEntry("LANGPREF", account.getLanguagePreference())
-        .containsEntry("FAVCATEGORY", account.getFavouriteCategoryId()).containsEntry("MYLISTOPT", 1)
-        .containsEntry("BANNEROPT", 0);
-  }
+  // assertThat(record).hasSize(5).containsEntry("USERID", account.getUsername())
+  // .containsEntry("LANGPREF", account.getLanguagePreference())
+  // .containsEntry("FAVCATEGORY", account.getFavouriteCategoryId()).containsEntry("MYLISTOPT", 1)
+  // .containsEntry("BANNEROPT", 0);
+  // }
 
-  @Test
-  void insertSignon() {
+  // @Test
+  // void insertSignon() {
 
-    // given
-    Account account = new Account();
-    account.setUsername("mybatis");
-    account.setPassword("password");
+  // // given
+  // Account account = new Account();
+  // account.setUsername("mybatis");
+  // account.setPassword("password");
 
-    // when
-    mapper.insertSignon(account);
+  // // when
+  // mapper.insertSignon(account);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM signon WHERE username = ?", "mybatis");
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM signon WHERE username = ?", "mybatis");
 
-    assertThat(record).hasSize(2).containsEntry("USERNAME", account.getUsername()).containsEntry("PASSWORD",
-        account.getPassword());
-  }
+  // assertThat(record).hasSize(2).containsEntry("USERNAME", account.getUsername()).containsEntry("PASSWORD",
+  // account.getPassword());
+  // }
 
-  @Test
-  void updateAccount() {
+  // @Test
+  // void updateAccount() {
 
-    // given
-    Account account = new Account();
-    account.setUsername("j2ee");
-    account.setEmail("mybatis@example.com");
-    account.setFirstName("My");
-    account.setLastName("Batis");
-    account.setStatus("NG");
-    account.setAddress1("Address 1");
-    account.setAddress2("Address 2");
-    account.setCity("City");
-    account.setState("ST");
-    account.setZip("99001");
-    account.setCountry("JPN");
-    account.setPhone("09012345678");
+  // // given
+  // Account account = new Account();
+  // account.setUsername("j2ee");
+  // account.setEmail("mybatis@example.com");
+  // account.setFirstName("My");
+  // account.setLastName("Batis");
+  // account.setStatus("NG");
+  // account.setAddress1("Address 1");
+  // account.setAddress2("Address 2");
+  // account.setCity("City");
+  // account.setState("ST");
+  // account.setZip("99001");
+  // account.setCountry("JPN");
+  // account.setPhone("09012345678");
 
-    // when
-    mapper.updateAccount(account);
+  // // when
+  // mapper.updateAccount(account);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM account WHERE userid = ?", "j2ee");
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM account WHERE userid = ?", "j2ee");
 
-    assertThat(record).hasSize(12).containsEntry("USERID", account.getUsername())
-        .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getLastName())
-        .containsEntry("LASTNAME", account.getFirstName()).containsEntry("STATUS", account.getStatus())
-        .containsEntry("ADDR1", account.getAddress1()).containsEntry("ADDR2", account.getAddress2())
-        .containsEntry("CITY", account.getCity()).containsEntry("STATE", account.getState())
-        .containsEntry("ZIP", account.getZip()).containsEntry("COUNTRY", account.getCountry())
-        .containsEntry("PHONE", account.getPhone());
-  }
+  // assertThat(record).hasSize(12).containsEntry("USERID", account.getUsername())
+  // .containsEntry("EMAIL", account.getEmail()).containsEntry("FIRSTNAME", account.getLastName())
+  // .containsEntry("LASTNAME", account.getFirstName()).containsEntry("STATUS", account.getStatus())
+  // .containsEntry("ADDR1", account.getAddress1()).containsEntry("ADDR2", account.getAddress2())
+  // .containsEntry("CITY", account.getCity()).containsEntry("STATE", account.getState())
+  // .containsEntry("ZIP", account.getZip()).containsEntry("COUNTRY", account.getCountry())
+  // .containsEntry("PHONE", account.getPhone());
+  // }
 
-  @Test
-  void updateProfile() {
+  // @Test
+  // void updateProfile() {
 
-    // given
-    Account account = new Account();
-    account.setUsername("j2ee");
-    account.setLanguagePreference("japanese");
-    account.setFavouriteCategoryId("C01");
-    account.setListOption(false);
-    account.setBannerOption(false);
+  // // given
+  // Account account = new Account();
+  // account.setUsername("j2ee");
+  // account.setLanguagePreference("japanese");
+  // account.setFavouriteCategoryId("C01");
+  // account.setListOption(false);
+  // account.setBannerOption(false);
 
-    // when
-    mapper.updateProfile(account);
+  // // when
+  // mapper.updateProfile(account);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM profile WHERE userid = ?", "j2ee");
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM profile WHERE userid = ?", "j2ee");
 
-    assertThat(record).hasSize(5).containsEntry("USERID", account.getUsername())
-        .containsEntry("LANGPREF", account.getLanguagePreference())
-        .containsEntry("FAVCATEGORY", account.getFavouriteCategoryId()).containsEntry("MYLISTOPT", 0)
-        .containsEntry("BANNEROPT", 0);
-  }
+  // assertThat(record).hasSize(5).containsEntry("USERID", account.getUsername())
+  // .containsEntry("LANGPREF", account.getLanguagePreference())
+  // .containsEntry("FAVCATEGORY", account.getFavouriteCategoryId()).containsEntry("MYLISTOPT", 0)
+  // .containsEntry("BANNEROPT", 0);
+  // }
 
-  @Test
-  void updateSignon() {
+  // @Test
+  // void updateSignon() {
 
-    // given
-    Account account = new Account();
-    account.setUsername("j2ee");
-    account.setPassword("password");
+  // // given
+  // Account account = new Account();
+  // account.setUsername("j2ee");
+  // account.setPassword("password");
 
-    // when
-    mapper.updateSignon(account);
+  // // when
+  // mapper.updateSignon(account);
 
-    // then
-    Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM signon WHERE username = ?", "j2ee");
+  // // then
+  // Map<String, Object> record = jdbcTemplate.queryForMap("SELECT * FROM signon WHERE username = ?", "j2ee");
 
-    assertThat(record).hasSize(2).containsEntry("USERNAME", account.getUsername()).containsEntry("PASSWORD",
-        account.getPassword());
-  }
+  // assertThat(record).hasSize(2).containsEntry("USERNAME", account.getUsername()).containsEntry("PASSWORD",
+  // account.getPassword());
+  // }
 
 }
