@@ -21,7 +21,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
+// import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -51,9 +51,9 @@ public class MapperTestContext {
     return factoryBean;
   }
 
-  @Bean
-  JdbcTemplate jdbcTemplate() {
-    return new JdbcTemplate(dataSource());
-  }
+  // @Bean
+  // JdbcTemplate jdbcTemplate() {
+  //   return new JdbcTemplate(dataSource());
+  // }
 
 }

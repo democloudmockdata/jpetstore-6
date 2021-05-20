@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mybatis.jpetstore.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+// import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,8 +34,8 @@ class AccountMapperTest {
   @Autowired
   private AccountMapper mapper;
 
-  @Autowired
-  private JdbcTemplate jdbcTemplate;
+  // @Autowired
+  // private JdbcTemplate jdbcTemplate;
 
   @Test
   void getAccountByUsername() {
