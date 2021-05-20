@@ -189,6 +189,9 @@
                 <Dependencies>jdk.unsupported</Dependencies>
               </manifestEntries>
             </archive>
+            <forkCount>3</forkCount>
+            <reuseForks>true</reuseForks>
+            <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
           </configuration>
         </plugin>
         <plugin>
@@ -200,6 +203,9 @@
           <artifactId>maven-site-plugin</artifactId>
           <configuration>
             <locales>en,es,ja,ko</locales>
+            <forkCount>3</forkCount>
+            <reuseForks>true</reuseForks>
+            <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
           </configuration>
         </plugin>
         <plugin>
@@ -207,6 +213,9 @@
           <artifactId>maven-resources-plugin</artifactId>
           <configuration>
             <overwrite>true</overwrite>
+            <forkCount>3</forkCount>
+            <reuseForks>true</reuseForks>
+            <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
           </configuration>
         </plugin>
         <plugin>
