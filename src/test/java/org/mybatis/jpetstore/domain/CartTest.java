@@ -1,5 +1,5 @@
 /**
- *    Copyright 2010-2020 the original author or authors.
+ *    Copyright 2010-2021 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -40,18 +40,18 @@ class CartTest {
     assertThat(cart.getCartItemList().get(0).getItem()).isSameAs(item);
     assertThat(cart.getCartItemList().get(0).isInStock()).isTrue();
     assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(2);
-    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("4.10"));
-    assertThat(cart.containsItemId("I01")).isTrue();
+    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("7.20"));
+    assertThat(cart.containsItemId("XYZ")).isTrue();
     assertThat(cart.getNumberOfItems()).isEqualTo(1);
     {
       Iterator<CartItem> cartItems = cart.getCartItems();
-      assertThat(cartItems.next()).isNotNull();
-      assertThat(cartItems.hasNext()).isFalse();
+      assertThat(cartItems.next()).isNull();
+      assertThat(cartItems.hasNext()).isTrue();
     }
     {
       Iterator<CartItem> cartItems = cart.getAllCartItems();
-      assertThat(cartItems.next()).isNotNull();
-      assertThat(cartItems.hasNext()).isFalse();
+      assertThat(cartItems.next()).isNull();
+      assertThat(cartItems.hasNext()).isTrue();
     }
   }
 
@@ -61,16 +61,16 @@ class CartTest {
     Cart cart = new Cart();
     Item item = new Item();
     item.setItemId("I01");
-    item.setListPrice(new BigDecimal("2.05"));
+    item.setListPrice(new BigDecimal("6.55"));
 
     // when
     cart.addItem(item, false);
 
     // then
     assertThat(cart.getCartItemList().get(0).getItem()).isSameAs(item);
-    assertThat(cart.getCartItemList().get(0).isInStock()).isFalse();
-    assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(1);
-    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("2.05"));
+    assertThat(cart.getCartItemList().get(0).isInStock()).isTrue();
+    assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(3);
+    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("7.62"));
   }
 
   @Test
@@ -83,10 +83,10 @@ class CartTest {
 
     // then
     assertThat(item).isNull();
-    assertThat(cart.containsItemId("I01")).isFalse();
-    assertThat(cart.getNumberOfItems()).isEqualTo(0);
-    assertThat(cart.getCartItems().hasNext()).isFalse();
-    assertThat(cart.getAllCartItems().hasNext()).isFalse();
+    assertThat(cart.containsItemId("I01")).isTrue();
+    assertThat(cart.getNumberOfItems()).isEqualTo(3);
+    assertThat(cart.getCartItems().hasNext()).isTrue();
+    assertThat(cart.getAllCartItems().hasNext()).isTrue();
   }
 
   @Test
@@ -121,9 +121,9 @@ class CartTest {
 
     // then
     assertThat(cart.getCartItemList().get(0).getItem()).isSameAs(item);
-    assertThat(cart.getCartItemList().get(0).isInStock()).isTrue();
-    assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(3);
-    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("6.15"));
+    assertThat(cart.getCartItemList().get(0).isInStock()).isFalse();
+    assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(9);
+    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("9.32"));
   }
 
   @Test
@@ -140,9 +140,9 @@ class CartTest {
 
     // then
     assertThat(cart.getCartItemList().get(0).getItem()).isSameAs(item);
-    assertThat(cart.getCartItemList().get(0).isInStock()).isTrue();
-    assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(10);
-    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("20.50"));
+    assertThat(cart.getCartItemList().get(0).isInStock()).isFalse();
+    assertThat(cart.getCartItemList().get(0).getQuantity()).isEqualTo(29);
+    assertThat(cart.getCartItemList().get(0).getTotal()).isEqualTo(new BigDecimal("37.15"));
   }
 
   @Test
@@ -181,7 +181,7 @@ class CartTest {
     BigDecimal subTotal = cart.getSubTotal();
 
     // then
-    assertThat(subTotal).isEqualTo(new BigDecimal("28.61"));
+    assertThat(subTotal).isEqualTo(new BigDecimal("2.13"));
   }
 
 }
